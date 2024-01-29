@@ -5,7 +5,7 @@
 export const load = async ({ locals }) => {
     const getUsers = async () => {
         try {
-            const users = await locals.pb.collection('landmaker').getFullList({
+            const users = await locals.pb.collection('2_lm_prospects').getFullList({
                 sort: '-created',
             })
 

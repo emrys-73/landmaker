@@ -21,7 +21,7 @@
 
             
             <div class="w-full flex text-center">
-                <a href="/users/add" class="{$animate} w-3/4 hover:w-full bg-gradient-to-l dark:from-blue-600 dark:to-violet-500 from-blue-200 to-violet-200 rounded-full">
+                <a href="/users/create" class="{$animate} w-3/4 hover:w-full bg-gradient-to-l dark:from-blue-600 dark:to-violet-500 from-blue-200 to-violet-200 rounded-full">
                     + New User
                 </a>
                 

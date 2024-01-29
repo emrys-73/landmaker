@@ -29,7 +29,7 @@
                 <Table.Head>Stage</Table.Head>
                 <Table.Head class="">Bio</Table.Head>
                 
-                <Table.Head class="text-right">Links</Table.Head>
+                <Table.Head class="">Links</Table.Head>
                 <Table.Head>Views</Table.Head>
               </Table.Row>
             </Table.Header>

@@ -16,7 +16,7 @@ export const handle = async ({ event, resolve }) => {
     // of a suggestion of one of the mantainers from pocketbase
     try {
         if (event.locals.pb.authStore.isValid) {
-            await event.locals.pb.collection('landmaker').authRefresh()
+            await event.locals.pb.collection('landmaker_users').authRefresh()
             event.locals.user = serializeNonPOJOs(event.locals.pb.authStore.model)  
         }
         

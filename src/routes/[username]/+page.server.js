@@ -6,7 +6,7 @@ import { getImageURL } from '$lib/utils.ts';
 export const load = async ({ locals, params }) => {
     const getUser = async () => {
         try {
-            const user = await locals.pb.collection('landmaker').getFirstListItem(`username="${params.username}"`)
+            const user = await locals.pb.collection('2_lm_prospects').getFirstListItem(`username="${params.username}"`)
 
             user.cover_url = user.cover ?  getImageURL(user.collectionId, user.id, user.cover) : undefined
 

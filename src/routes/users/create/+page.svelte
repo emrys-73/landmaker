@@ -103,14 +103,14 @@
                 <span class="px-6 rounded-full py-2 dark:bg-white dark:bg-opacity-10 bg-black bg-opacity-10">
                     Creating
                 </span>
-                <a href="/users/jsonadd" class="flex">
+                <!-- <a href="/users/jsonadd" class="flex">
                     <span class="{$animate} px-6 rounded-full py-2 border-2 border-opacity-20 dark:border-white border-black dark:bg-transparent bg-transparent hover:bg-black hover:text-white hover:dark:bg-white hover:dark:text-black dark:bg-opacity-10 bg-black bg-opacity-10">
                         Add through JSON
                     </span>
-                </a>
+                </a> -->
             </div>
 
-            <div class="flex flex-row gap-4">
+            <div class="flex flex-row gap-4 py-4">
                 <input type="text" name="full_name" placeholder="New User" class="text-7xl sm:text-9xl md:text-[180px] py-8 font-bold w-full justify-start bg-transparent placeholder:dark:text-white placeholder:text-black rounded-3xl placeholder:opacity-50" />
                     
             </div>
@@ -118,11 +118,14 @@
         </div>
 
         <div class="w-full justify-start flex flex-row gap-8 ">
-            <div>
-                <Avatar.Root class="w-14 h-14">
+            <div class="relative">
+                <Avatar.Root class="w-16 h-16">
                     <Avatar.Image src={cover_url} alt="Cover pic" />
                     <Avatar.Fallback>CN</Avatar.Fallback>
                   </Avatar.Root>
+                  <div>
+                    
+                  </div>
             </div>
 
             <input type="text" name="bio" placeholder="Kinda interesting new person." class="bg-black bg-opacity-10 dark:bg-white dark:bg-opacity-5 rounded-2xl w-full px-6 py-4 placeholder:dark:text-white placeholder:text-black placeholder:opacity-50">
@@ -130,57 +133,21 @@
         </div>
 
         <div>
-        {#each links as l}
-                Hello!!
-        {/each}
+
+          
+
         </div>
 
-        <!-- socials -->
         <div class="py-10">
-            <Dialog.Root>
-                <Dialog.Trigger class={buttonVariants({ variant: "outline" })}
-                  >Add social</Dialog.Trigger
-                >
-                <Dialog.Content class="sm:max-w-[425px]">
-                  <Dialog.Header>
-                    <Dialog.Title>Add Link</Dialog.Title>
-                    <Dialog.Description>
-                      Add links to a user's socials here.
-                    </Dialog.Description>
-                  </Dialog.Header>
-                  <div class="grid gap-4 py-4">
-                    <div class="grid grid-cols-4 items-center gap-4">
-                      <Label for="social" class="text-right">Site</Label>
-                      <Select.Root class="w-full">
-                        <Select.Trigger class="w-[180px]">
-                          <Select.Value placeholder="Select a site" bind:value={selectedSocial} />
-                        </Select.Trigger>
-                        <Select.Content>
-                          <Select.Group>
-                            <Select.Label>Social</Select.Label>
-                            {#each socials as social}
-                              <Select.Item value={social.value} label={social.label}>{social.label}</Select.Item>
-                            {/each}
-                          </Select.Group>
-                        </Select.Content>
-                      </Select.Root>
+          <Button variant="outline" type="submit">
+            Create user
+          </Button>
+        </div>
 
-                      
-                    </div>
-                    <div class="grid grid-cols-4 items-center gap-4">
-                        <Label for="url" class="text-right">URL</Label>
-                        <Input id="url" class="col-span-3" bind:value={url} />
-                      </div>
-                  </div>
-                  <Dialog.Footer>
-                    <Button type="button" on:click={() => addLink(selectedSocial, url)}>Add Link</Button>
-                  </Dialog.Footer>
-                </Dialog.Content>
-              </Dialog.Root>
 
 
               
-        </div>
+              
 
     </form>
     {/if}

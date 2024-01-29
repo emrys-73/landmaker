@@ -28,7 +28,7 @@
                     <span class="px-6 rounded-full py-2 dark:bg-white dark:bg-opacity-10 bg-black bg-opacity-10">
                         Creating
                     </span>
-                    <a href="/users/add" class="flex">
+                    <a href="/users/create" class="flex">
                         <span class="{$animate} px-6 rounded-full py-2 border-2 border-opacity-20 border-white dark:bg-transparent hover:dark:bg-white hover:dark:text-black dark:bg-opacity-10 bg-black bg-opacity-10">
                             Add manually
                         </span>
