@@ -2,9 +2,8 @@
 // @ts-nocheck
 
 	import { onMount } from 'svelte';
-    import { animate, bg_img, cover_img } from '../../stores.js';
-    import { fade, fly, scale } from 'svelte/transition'
-    import { elasticIn, elasticInOut, elasticOut } from 'svelte/easing'
+    import { animate, cover_img } from '../../stores.js';
+    import { scale } from 'svelte/transition'
 
     let bg;
     let show = false;
@@ -24,21 +23,11 @@
         show = true;
 
         userLinks = data?.user?.links ? data.user.links : [];
-
-        try {
-            parsed = typeof userLinks
-        } catch (error) {
-            console.log(error)
-        }
-
-
-
-
     })
 
 
     const setBg = async () => {
-        if (data?.user.bg_image_url) {
+        if (data?.user?.bg_image_url) {
             bg = `bg-[url('${data.user.bg_image_url}')]`
         }
         else {

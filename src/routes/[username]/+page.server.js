@@ -8,9 +8,9 @@ export const load = async ({ locals, params }) => {
         try {
             const user = await locals.pb.collection('2_lm_prospects').getFirstListItem(`username="${params.username}"`)
 
-            user.cover_url = user.cover ?  getImageURL(user.collectionId, user.id, user.cover) : undefined
+            user.cover_url = user?.cover ?  getImageURL(user.collectionId, user.id, user.cover) : undefined
 
-            user.bg_image_url = user.bg_image ?  getImageURL(user.collectionId, user.id, user.bg_image) : undefined
+            user.bg_image_url = user?.bg_image ? getImageURL(user.collectionId, user.id, user.bg_image) : undefined
 
             // console.log(user)
 
