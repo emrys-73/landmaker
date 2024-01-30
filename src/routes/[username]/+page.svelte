@@ -6,7 +6,7 @@
     import { scale } from 'svelte/transition'
 
     let bg;
-    let show = false;
+    let show = true;
 
     let userLinks;
     $: userLinks = [];
@@ -20,11 +20,12 @@
 
         setBg()
 
-        show = true;
-
-        userLinks = data?.user?.links ? data.user.links : [];
+        await getlinks()
     })
 
+    const getlinks = async () => {
+        userLinks = data?.user?.links ?? [];
+    }
 
     const setBg = async () => {
         if (data?.user?.bg_image_url) {
@@ -57,6 +58,7 @@
 </script>
 
 
+{#if show}
 <div class="{bg} bg-cover w-full h-full min-h-screen py-20 flex flex-col justify-center items-center relative">
     
     {#if data?.user?.bg_image_url}
@@ -65,7 +67,6 @@
     </div>
     {/if}
    
-    {#if show}
     <!-- <div transition:fly={{ y:-400, duration: 700, easing: elasticOut }} class=" w-3/4 flex items-center justify-center flex-col z-20"> -->
     <div transition:scale={{ y:-400, duration: 700 }} class=" w-3/4 flex items-center justify-center flex-col z-20">
         <div class="rounded-3xl altashadow-xl w-[400px] h-full flex justify-center items-center flex-col  overflow-hidden">
@@ -91,7 +92,7 @@
                 <!-- links -->
 
                 <div class="w-full flex flex-row gap-4 justify-start items-center overflow-auto pt-6">
-                    {#each userLinks as l}    
+                    {#each data.user.links as l}    
                         {#if l.active}
                         <a href={l.url}>
                             <div class="{$animate} {l.bg_class} {data?.user?.darkMode ? 'bg-white bg-opacity-5 fill-white' : 'bg-black bg-opacity-10 fill-black'} hover:fill-white rounded-full w-10 h-10 justify-center items-center flex ">
@@ -107,5 +108,5 @@
             </div>
         </div>
     </div>
-    {/if}
 </div>
+{/if}

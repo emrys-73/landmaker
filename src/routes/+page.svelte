@@ -1,8 +1,6 @@
 <script>
     import { animate } from '../stores.js';
 
-    export let data;
-
 </script>
 
 <div class="w-full h-full min-h-screen pt-16 flex flex-col justify-center items-center">

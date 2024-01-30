@@ -2,9 +2,8 @@
     // @ts-nocheck
     
         import { animate } from "../../../stores";
-        import * as Avatar from "$lib/components/ui/avatar";
         import { onMount } from "svelte";
-        import { scale, fly } from 'svelte/transition'
+        import { fly } from 'svelte/transition'
      
         let show = false;
     

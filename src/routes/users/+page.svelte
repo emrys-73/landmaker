@@ -2,7 +2,6 @@
 // @ts-nocheck
 
     import * as Table from "$lib/components/ui/table";
-	import { onMount } from "svelte";
     import { animate } from "../../stores.js";
 
     export let data

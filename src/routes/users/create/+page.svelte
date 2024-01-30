@@ -6,23 +6,7 @@
     import { onMount } from "svelte";
     import { scale, fly } from 'svelte/transition'
 
-    import { Button, buttonVariants } from "$lib/components/ui/button";
-    import * as Dialog from "$lib/components/ui/dialog";
-    import { Input } from "$lib/components/ui/input";
-    import { Label } from "$lib/components/ui/label";
-
-    import * as Select from "$lib/components/ui/select";
-    const socials = [
-        { value: "insta", label: "Instagram" },
-        { value: "facebook", label: "Facebook" },
-        { value: "twitterx", label: "X (Twitter)" },
-        { value: "linkdin", label: "LinkdIn" },
-        { value: "tiktok", label: "TikTok" },
-        { value: "web", label: "Web" },
-        { value: "pinterest", label: "Pinterest" },
-        { value: "email", label: "EMail" },
-        { value: "whatsapp", label: "Whatsapp" },
-    ];
+    import { Button } from "$lib/components/ui/button";
 
     let links = [
         "hi"
