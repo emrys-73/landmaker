@@ -70,7 +70,7 @@
 
 <div class="{bg} bg-cover w-full h-full min-h-screen py-20 flex flex-col justify-center items-center relative">
     
-    {#if data?.user.bg_image_url}
+    {#if data?.user?.bg_image_url}
     <div class=" bg-cover w-full h-full z-10 absolute top-0 min-h-screen">
         <img src={data?.user.bg_image_url} alt="bg" class="w-full h-full object-cover">
     </div>
