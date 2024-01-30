@@ -54,7 +54,12 @@
                     </Table.Cell>
                       <Table.Cell>{user.stage}</Table.Cell>
                       <Table.Cell class="">{@html user.bio}</Table.Cell>
-                      <Table.Cell>{user.links}</Table.Cell>
+                      <Table.Cell>
+                        {typeof user.links}
+
+                        
+                            
+                    </Table.Cell>
                       <Table.Cell>{user.views}</Table.Cell>
                     </Table.Row>
                 {/each}
