@@ -18,7 +18,7 @@
     onMount(async () => {
         cover_img.set(`bg-[url(${data?.user?.cover_url})]`)
 
-        await setBg()
+        setBg()
 
         show = true;
 
