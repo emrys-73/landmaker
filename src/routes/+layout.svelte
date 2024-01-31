@@ -17,6 +17,14 @@
 			title: "Users",
 			url: "/users",
 		},
+		{
+			title: "AI",
+			url: "/AI",
+		},
+		{
+			title: "Link Editor",
+			url: "/links",
+		},
 	]
 
 </script>
