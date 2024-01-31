@@ -4,6 +4,12 @@
 import { redirect } from '@sveltejs/kit';
 const { randomBytes } = await import('node:crypto')
 
+export const load = ({ locals }) => {
+    if (!locals.user) {
+        throw redirect(303, '/login')
+    }
+}
+
 const generateUsername = (/** @type {string | any[]} */ name) => {
     const id = randomBytes(2).toString('hex')
     if (name.length > 3 ) {
