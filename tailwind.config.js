@@ -56,7 +56,23 @@ const config = {
 			},
 			fontFamily: {
 				sans: [...fontFamily.sans]
-			}
+			},
+			// Animation keyframes
+			keyframes: {
+				slideInFromAbove: {
+				  '0%': { opacity: '0', transform: 'translateY(-100%)' },
+				  '100%': { opacity: '1', transform: 'translateY(0)' },
+				},
+				slideOutUpwards: {
+				  '0%': { opacity: '1', transform: 'translateY(0)' },
+				  '100%': { opacity: '0', transform: 'translateY(-100%)' },
+				},
+			  },
+			  // Animation class
+			  animation: {
+				'slide-in': 'slideInFromAbove 0.5s ease-out',
+				'slide-out': 'slideOutUpwards 0.5s ease-in',
+			  },
 		}
 	},
 };

@@ -2,7 +2,7 @@
     // @ts-nocheck
     
         import { onMount } from 'svelte';
-        import { animate, cover_img } from '../../stores.js';
+        import { animate, cover_img } from '../../../stores.js';
         import { scale } from 'svelte/transition'
         import { useChat } from 'ai/svelte'
         import { Button } from '$lib/components/ui/button';
@@ -39,7 +39,7 @@
     
             setBg()
     
-            showAI = false;
+            showAI = true;
     
             starters = await getSystemPrompt();
     
@@ -137,76 +137,58 @@
             <img src={data?.user.bg_image_url} alt="bg" class="w-full h-full object-cover">
         </div>
         {/if}
-       
-        <!-- <div transition:fly={{ y:-400, duration: 700, easing: elasticOut }} class=" w-3/4 flex items-center justify-center flex-col z-20"> -->
-        <div transition:scale={{ y:-400, duration: 700 }} class=" w-3/4 items-center justify-center flex-col z-20 {showAI ? 'hidden' : 'flex'} transition-all animate-slide-in ease-in-out duration-700">
-            <div class="rounded-3xl altashadow-xl w-[400px] h-full flex justify-center items-center flex-col  overflow-hidden">
-                {#if data?.user?.cover_url}
-                <div class="w-full flex relative">
-                    <img src={data?.user?.cover_url} alt="cover" class="w-full h-[50vh] object-cover shrink-0">
-                    {#if data?.user?.fade}
-                        <div class=" bg-gradient-to-b from-transparent to-black w-full h-1/2 absolute bottom-0"/>
-                    {/if}
-                </div>
-                {/if}
-                <div class="hidden">
-                    Made by Emrys
-                </div>
-                <div class="px-8 {data?.user?.fade ? 'pb-8 pt-4' : 'py-6'} h-full w-full gap-6 flex flex-col {data?.user?.darkMode ? 'bg-[#030304] text-[#F9F9F9]' : 'bg-white text-[#030304]'}">
-                    <div class="w-full h-full gap-2 flex flex-col justify-start items-start">
-                        {#if data?.user?.fade}
-                            <h1 class="text-4xl font-bold z-50 -mt-28">
-                                {data?.user?.full_name}
-                            </h1>
+      
     
-                        {:else}
-                            <h1 class="text-4xl font-bold z-50">
-                                {data?.user?.full_name}
-                            </h1>
-                        {/if}
-        
-                        <div class="w-full h-full flex flex-row justify-start items-center gap-2">
-                            {#each tags as t}
-                                <div class="dark:bg-white dark:bg-opacity-10 px-4 py-1 text-sm rounded-2xl backdrop-blur-lg">
-                                    {t}
-                                </div>
-                            {/each}
-                        </div>
-                    </div>
+        <div class="w-3/4 min-h-80 transition-all ease-in-out animate-slide-in duration-1000 flex items-center justify-center flex-col z-20">
+            <div class="rounded-2xl relative altashadow-xl w-[400px] h-full dark:bg-black bg-white dark:bg-opacity-80 bg-opacity-20 backdrop-blur-xl flex justify-center items-center flex-col min-h-[500px] overflow-hidden">
+                <a href={`/${data?.user?.username}`} class="{$animate} z-50 absolute top-6 right-6 opacity-70 hover:opacity-100 hover:cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                      </svg>
+                      
+                    </a>
+                <h1 class="text-2xl font-bold z-30 absolute top-0 py-5 px-8 w-full justify-start backdrop-blur-2xl">
+                    {data?.user?.full_name}
+                </h1>
     
-                    <div>
-                        <p class="text-sm max-h-40 overflow-auto">
-                            {@html data?.user?.bio}
-                           
-                        </p>
-                    </div>
+    
+                <div id="chatbox" class="w-full h-full relative flex flex-col min-h-[500px]">
+                    <!-- bg-[url('/social_bgs/insta.png')] bg-cover  -->
                     
-                    <!-- links -->
-    
-                    <div class="w-full flex flex-row gap-4 justify-start items-center overflow-auto pt-6">
-                        {#each data?.user?.links as l}    
-                            {#if l.active}
-                            <a href={l.url}>
-                                <div class="{$animate} {l.bg_class} {data?.user?.darkMode ? 'bg-white bg-opacity-5 fill-white' : 'bg-black bg-opacity-10 fill-black'} hover:fill-white rounded-full w-10 h-10 justify-center items-center flex ">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox={l.viewbox} class="w-6 h-6  opacity-40 hover:opacity-100">
-                                        {@html l.icon_path}
-                                    </svg>
-                                    
-                                </div>
-                            </a>
+                    {#if loaded}
+                    <div class=" h-full flex justify-end items-end min-h-[450px] overflow-auto mb-12 px-4 mt-6 z-10 w-full">
+                        
+                        
+                        <ul class="overflow-auto h-[450px] px-4 py-4 mt-12 flex flex-col gap-2 w-full">
+                            {#each $messages as message}
+                            {#if message.role == "assistant"}
+                            <li class="font-normal text-white">{message.content}</li>
+                            {:else}
+                                {#if message.role == "user"}
+                                    <li class="font-normal opacity-50 w-full">{message.content}</li>
+                                {/if}
                             {/if}
-                        {/each}
+                                
+                            {/each}
+                            </ul>
                     </div>
-                    <div class="w-full h-full flex flex-col justify-center items-center">
-                        <Button href={`/${data?.user?.username}/ai`} class="w-full rounded-full">
-                            Talk to my AI
-                        </Button>
-                    </div>
+                    {/if}
+                    <form on:submit|preventDefault={handleSubmit} class="w-full absolute bottom-0 flex flex-row overflow-hidden rounded-full">
+                        <input bind:value={$input} class="w-full bg-[#e5e5e5] text-black px-4 font-semibold text-sm" />
+                        <button type="submit" class="{$animate} px-4 py-2 bg-[#000000] hover:bg-[#FFFFFF] hover:text-black text-white font-semibold">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
+                            </svg>                          
+                        </button>
+                        </form>
+                    
+    
                 </div>
+    
+    
+    
             </div>
         </div>
-    
-
     </div>
     {/if}
     
