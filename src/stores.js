@@ -9,3 +9,5 @@ export const bg_img = writable("");
 export const cover_img = writable("");
 
 export const links = writable("");
+
+export const AIMessage = writable("AI: ");

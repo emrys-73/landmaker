@@ -143,7 +143,7 @@
             <div class="rounded-3xl altashadow-xl w-[400px] h-full flex justify-center items-center flex-col  overflow-hidden">
                 {#if data?.user?.cover_url}
                 <div class="w-full flex relative">
-                    <img src={data?.user?.cover_url} alt="cover" class="w-full h-[50vh] object-cover shrink-0">
+                    <img src={data?.user?.cover_url} alt="cover" class="w-full h-[40vh] object-cover shrink-0">
                     {#if data?.user?.fade}
                         <div class=" bg-gradient-to-b from-transparent to-black w-full h-1/2 absolute bottom-0"/>
                     {/if}
@@ -198,7 +198,7 @@
                         {/each}
                     </div>
                     <div class="w-full h-full flex flex-col justify-center items-center">
-                        <Button href={`/${data?.user?.username}/ai`} class="w-full rounded-full">
+                        <Button href={`https://ai.astralta.com/${data?.user?.username}`} class="w-full rounded-full">
                             Talk to my AI
                         </Button>
                     </div>
